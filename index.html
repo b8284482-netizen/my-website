@@ -1,24 +1,435 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>bardiazamani</title>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سایت من</title>
+
 <style>
-body{margin:0;font-family:tahoma;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;justify-content:center;align-items:center;height:100vh}
-.box{background:#ffffff22;padding:20px;border-radius:20px;text-align:center;color:#fff;width:320px;backdrop-filter:blur(8px)}
-#btn{width:180px;height:180px;border-radius:50%;border:none;font-size:28px;font-weight:bold}
-button{cursor:pointer}
-</style></head><body><div class="box">
-<h1>🎮 بردیا پوینت</h1>
-<div>⭐ بردیا: <span id="s">0</span></div>
-<div>🏆 لول: <span id="l">1</span></div><br>
-<button id="btn">بزن روش</button><br><br>
-<button onclick="up()">ارتقا (20)</button>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma,Arial;
+}
+
+body{
+min-height:100vh;
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+}
+
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 8%;
+}
+
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+opacity:.9;
+}
+
+
+
+.hero{
+text-align:center;
+padding:70px 20px;
+animation:show 1s ease;
+}
+
+
+.hero h1{
+font-size:45px;
+margin-bottom:20px;
+}
+
+
+.hero p{
+font-size:18px;
+max-width:600px;
+margin:auto;
+line-height:2;
+}
+
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 35px;
+background:white;
+color:#764ba2;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+
+
+/* بازی */
+
+.game{
+
+width:90%;
+max-width:450px;
+margin:20px auto;
+padding:35px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+border-radius:25px;
+text-align:center;
+animation:show 1.2s;
+}
+
+
+.game h2{
+font-size:30px;
+margin-bottom:20px;
+}
+
+
+.coins{
+
+font-size:25px;
+margin:20px;
+
+}
+
+
+
+.game button{
+
+border:none;
+padding:15px 35px;
+border-radius:30px;
+background:white;
+color:#764ba2;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+
+}
+
+
+.game button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+.coin{
+
+position:fixed;
+font-size:45px;
+animation:coin 1s forwards;
+pointer-events:none;
+
+}
+
+
+
+/* کارت ها */
+
+
+.cards{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+padding:40px 10%;
+}
+
+
+.card{
+width:250px;
+padding:30px;
+text-align:center;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+border-radius:20px;
+animation:show 1.5s ease;
+}
+
+
+.card h2{
+margin-bottom:15px;
+}
+
+
+.card p{
+line-height:1.8;
+}
+
+
+
+footer{
+text-align:center;
+padding:30px;
+opacity:.8;
+}
+
+
+
+
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+
+@keyframes coin{
+
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+
+100%{
+transform:translateY(-180px) scale(1.5);
+opacity:0;
+}
+
+}
+
+
+
+@media(max-width:600px){
+
+.hero h1{
+font-size:32px;
+}
+
+
+header{
+flex-direction:column;
+gap:20px;
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+🚀 سایت من
 </div>
+
+
+<nav>
+
+<a href="#">خانه</a>
+<a href="#">درباره</a>
+<a href="#">تماس</a>
+
+</nav>
+
+
+</header>
+
+
+
+<section class="hero">
+
+
+<h1>
+سلام، خوش آمدید 👋
+</h1>
+
+
+<p>
+این یک سایت آزمایشی ساخته شده با HTML و CSS است.
+بعداً می‌توانیم آن را تبدیل به یک پروژه بزرگ‌تر کنیم.
+</p>
+
+
+<a class="btn" href="#">
+شروع کنید
+</a>
+
+
+</section>
+
+
+
+
+
+<section class="game">
+
+
+<h2>
+🪙 بازی جمع کردن سکه
+</h2>
+
+
+<div class="coins">
+
+سکه‌های من:
+<span id="coins">0</span>
+
+</div>
+
+
+<button onclick="getCoin()">
+
+گرفتن سکه 🪙
+
+</button>
+
+
+</section>
+
+
+
+
+
+
+<section class="cards">
+
+
+<div class="card">
+
+<h2>
+⚡ سریع
+</h2>
+
+<p>
+طراحی سبک و سریع برای باز شدن راحت.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+✨ زیبا
+</h2>
+
+<p>
+ظاهر مدرن با افکت‌های جذاب.
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>
+🚀 قابل توسعه
+</h2>
+
+<p>
+آماده برای تبدیل شدن به یک پروژه بزرگ.
+</p>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<footer>
+
+ساخته شده با ❤️ توسط بردیا - 2026
+
+</footer>
+
+
+
+
+
 <script>
-let score=0,lvl=1,power=1,cost=20;
-const s=document.getElementById('s'),l=document.getElementById('l');
-function beep(){let a=new (AudioContext||webkitAudioContext)();let o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=700;g.gain.value=.05;o.start();o.stop(a.currentTime+.05);}
-function fx(x,y){let d=document.createElement('div');d.textContent='✨ +'+power;d.style='position:fixed;left:'+x+'px;top:'+y+'px;color:#fff;font-weight:bold;pointer-events:none;transition:1s';document.body.appendChild(d);setTimeout(()=>{d.style.transform='translateY(-60px)';d.style.opacity=0;},10);setTimeout(()=>d.remove(),1000);}
-btn.onclick=e=>{score+=power;if(score>=lvl*100){lvl++;document.body.style.background='hsl('+Math.random()*360+',70%,55%)';}s.textContent=score;l.textContent=lvl;beep();fx(e.clientX,e.clientY);localStorage.game=JSON.stringify({score,lvl,power,cost});}
-function up(){if(score<cost)return alert('بردیا کافی نیست');score-=cost;power++;cost=Math.floor(cost*1.7);s.textContent=score;localStorage.game=JSON.stringify({score,lvl,power,cost});}
-if(localStorage.game){let d=JSON.parse(localStorage.game);score=d.score;lvl=d.lvl;power=d.power;cost=d.cost;s.textContent=score;l.textContent=lvl;}
-</script></body></html>
+
+
+let coins = localStorage.getItem("coins") || 0;
+
+document.getElementById("coins").innerText = coins;
+
+
+
+function getCoin(){
+
+coins++;
+
+localStorage.setItem("coins",coins);
+
+document.getElementById("coins").innerText = coins;
+
+
+
+let coin=document.createElement("div");
+
+coin.className="coin";
+
+coin.innerHTML="🪙";
+
+
+coin.style.left=Math.random()*80+"%";
+coin.style.top="60%";
+
+
+document.body.appendChild(coin);
+
+
+setTimeout(()=>{
+
+coin.remove();
+
+},1000);
+
+
+}
+
+
+</script>
+
+
+
+</body>
+</html>
