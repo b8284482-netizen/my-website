@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>سایت من</title>
+<title>Coin World 🪙</title>
 
 <style>
 
@@ -17,70 +17,57 @@ font-family:Tahoma,Arial;
 
 body{
 min-height:100vh;
-background:linear-gradient(135deg,#667eea,#764ba2);
+background:linear-gradient(135deg,#141e30,#243b55);
 color:white;
 }
 
 
-header{
+.start{
+height:100vh;
 display:flex;
-justify-content:space-between;
+flex-direction:column;
+justify-content:center;
 align-items:center;
-padding:25px 8%;
-}
-
-
-.logo{
-font-size:28px;
-font-weight:bold;
-}
-
-
-nav a{
-color:white;
-text-decoration:none;
-margin:0 10px;
-opacity:.9;
-}
-
-
-
-.hero{
 text-align:center;
-padding:70px 20px;
-animation:show 1s ease;
+padding:20px;
 }
 
 
-.hero h1{
-font-size:45px;
-margin-bottom:20px;
+.start h1{
+font-size:55px;
+animation:up 1s ease;
 }
 
 
-.hero p{
-font-size:18px;
-max-width:600px;
-margin:auto;
+.start p{
+font-size:20px;
+margin:25px;
 line-height:2;
+max-width:550px;
+animation:up 1.5s ease;
 }
 
 
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:15px 35px;
-background:white;
-color:#764ba2;
-border-radius:30px;
-text-decoration:none;
+button{
+border:none;
+cursor:pointer;
 font-weight:bold;
 transition:.3s;
 }
 
 
-.btn:hover{
-transform:scale(1.08);
+.start button{
+padding:18px 50px;
+border-radius:40px;
+font-size:20px;
+background:white;
+color:#243b55;
+animation:up 2s ease;
+}
+
+
+button:hover{
+transform:scale(1.1);
 }
 
 
@@ -88,115 +75,95 @@ transform:scale(1.08);
 /* بازی */
 
 .game{
+display:none;
+padding:30px;
+}
 
-width:90%;
-max-width:450px;
-margin:20px auto;
-padding:35px;
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(10px);
-border-radius:25px;
+
+.title{
 text-align:center;
-animation:show 1.2s;
+font-size:40px;
+margin-bottom:30px;
 }
 
 
-.game h2{
-font-size:30px;
-margin-bottom:20px;
+.stats{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
 }
 
 
-.coins{
-
-font-size:25px;
-margin:20px;
-
+.box{
+background:#ffffff20;
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:20px;
+width:150px;
+text-align:center;
+font-size:20px;
 }
 
 
 
-.game button{
+.play{
+max-width:450px;
+margin:40px auto;
+padding:35px;
+text-align:center;
+background:#ffffff15;
+border-radius:25px;
+}
 
-border:none;
-padding:15px 35px;
-border-radius:30px;
+
+.play h2{
+margin-bottom:25px;
+}
+
+
+.coinBtn{
+padding:18px 45px;
+border-radius:40px;
 background:white;
-color:#764ba2;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-transition:.3s;
-
-}
-
-
-.game button:hover{
-
-transform:scale(1.1);
-
-}
-
-
-.coin{
-
-position:fixed;
-font-size:45px;
-animation:coin 1s forwards;
-pointer-events:none;
-
+color:#243b55;
+font-size:20px;
 }
 
 
 
-/* کارت ها */
-
-
-.cards{
+.features{
 display:flex;
 justify-content:center;
 gap:20px;
 flex-wrap:wrap;
-padding:40px 10%;
 }
 
 
 .card{
-width:250px;
-padding:30px;
-text-align:center;
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(10px);
+background:#ffffff15;
+padding:25px;
 border-radius:20px;
-animation:show 1.5s ease;
-}
-
-
-.card h2{
-margin-bottom:15px;
-}
-
-
-.card p{
-line-height:1.8;
-}
-
-
-
-footer{
+width:200px;
 text-align:center;
-padding:30px;
-opacity:.8;
 }
 
 
 
+.coin{
+position:fixed;
+font-size:45px;
+animation:coinMove 1s forwards;
+pointer-events:none;
+}
 
-@keyframes show{
+
+
+@keyframes up{
 
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(80px);
 }
 
 to{
@@ -207,8 +174,7 @@ transform:translateY(0);
 }
 
 
-
-@keyframes coin{
+@keyframes coinMove{
 
 0%{
 transform:translateY(0) scale(1);
@@ -216,28 +182,11 @@ opacity:1;
 }
 
 100%{
-transform:translateY(-180px) scale(1.5);
+transform:translateY(-200px) scale(1.5);
 opacity:0;
 }
 
 }
-
-
-
-@media(max-width:600px){
-
-.hero h1{
-font-size:32px;
-}
-
-
-header{
-flex-direction:column;
-gap:20px;
-}
-
-}
-
 
 </style>
 
@@ -247,139 +196,109 @@ gap:20px;
 <body>
 
 
-<header>
-
-<div class="logo">
-🚀 سایت من
-</div>
-
-
-<nav>
-
-<a href="#">خانه</a>
-<a href="#">درباره</a>
-<a href="#">تماس</a>
-
-</nav>
-
-
-</header>
-
-
-
-<section class="hero">
-
+<div class="start" id="start">
 
 <h1>
-سلام، خوش آمدید 👋
+🪙 Coin World
 </h1>
 
-
 <p>
-این یک سایت آزمایشی ساخته شده با HTML و CSS است.
-بعداً می‌توانیم آن را تبدیل به یک پروژه بزرگ‌تر کنیم.
+به دنیای سکه‌ها خوش آمدید!
+سکه جمع کن، لول بالا ببر و قدرت خودت را بیشتر کن.
 </p>
 
 
-<a class="btn" href="#">
-شروع کنید
-</a>
-
-
-</section>
-
-
-
-
-
-<section class="game">
-
-
-<h2>
-🪙 بازی جمع کردن سکه
-</h2>
-
-
-<div class="coins">
-
-سکه‌های من:
-<span id="coins">0</span>
-
-</div>
-
-
-<button onclick="getCoin()">
-
-گرفتن سکه 🪙
-
+<button onclick="startGame()">
+شروع بازی 🚀
 </button>
 
 
-</section>
-
-
-
-
-
-
-<section class="cards">
-
-
-<div class="card">
-
-<h2>
-⚡ سریع
-</h2>
-
-<p>
-طراحی سبک و سریع برای باز شدن راحت.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>
-✨ زیبا
-</h2>
-
-<p>
-ظاهر مدرن با افکت‌های جذاب.
-</p>
-
 </div>
 
 
 
 
-<div class="card">
+<div class="game" id="game">
 
-<h2>
-🚀 قابل توسعه
-</h2>
 
-<p>
-آماده برای تبدیل شدن به یک پروژه بزرگ.
-</p>
+<div class="title">
+🪙 Coin World
+</div>
+
+
+
+<div class="stats">
+
+
+<div class="box">
+🪙 سکه
+<br>
+<span id="coins">0</span>
+</div>
+
+
+<div class="box">
+⭐ لول
+<br>
+<span id="level">1</span>
+</div>
+
+
+<div class="box">
+⚡ انرژی
+<br>
+<span id="energy">100</span>
+</div>
+
 
 </div>
 
 
 
-</section>
+<div class="play">
+
+<h2>
+جمع کردن سکه
+</h2>
+
+
+<button class="coinBtn" onclick="getCoin()">
+گرفتن سکه 🪙
+</button>
+
+
+</div>
 
 
 
+<div class="features">
 
 
-<footer>
+<div class="card">
+🛒 فروشگاه
+<br>
+به زودی
+</div>
 
-ساخته شده با ❤️ توسط بردیا - 2026
 
-</footer>
+<div class="card">
+🎒 کیف
+<br>
+به زودی
+</div>
 
+
+<div class="card">
+🏆 رکورد
+<br>
+به زودی
+</div>
+
+
+</div>
+
+
+</div>
 
 
 
@@ -387,19 +306,66 @@ gap:20px;
 <script>
 
 
-let coins = localStorage.getItem("coins") || 0;
+let coins = Number(localStorage.getItem("coins")) || 0;
+let level = Number(localStorage.getItem("level")) || 1;
+let energy = Number(localStorage.getItem("energy")) || 100;
 
-document.getElementById("coins").innerText = coins;
+
+
+function startGame(){
+
+document.getElementById("start").style.display="none";
+
+document.getElementById("game").style.display="block";
+
+update();
+
+}
+
+
+
+function update(){
+
+document.getElementById("coins").innerText=coins;
+
+document.getElementById("level").innerText=level;
+
+document.getElementById("energy").innerText=energy;
+
+}
 
 
 
 function getCoin(){
 
+
+if(energy<=0){
+
+alert("انرژی تموم شده!");
+
+return;
+
+}
+
+
 coins++;
+energy--;
+
+
+if(coins % 10 === 0){
+
+level++;
+
+}
+
+
 
 localStorage.setItem("coins",coins);
+localStorage.setItem("level",level);
+localStorage.setItem("energy",energy);
 
-document.getElementById("coins").innerText = coins;
+
+update();
 
 
 
@@ -409,12 +375,12 @@ coin.className="coin";
 
 coin.innerHTML="🪙";
 
-
 coin.style.left=Math.random()*80+"%";
 coin.style.top="60%";
 
 
 document.body.appendChild(coin);
+
 
 
 setTimeout(()=>{
@@ -428,7 +394,6 @@ coin.remove();
 
 
 </script>
-
 
 
 </body>
