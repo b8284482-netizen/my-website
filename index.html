@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bardiazamani</title>
+<style>
+body{margin:0;font-family:tahoma;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;justify-content:center;align-items:center;height:100vh}
+.box{background:#ffffff22;padding:20px;border-radius:20px;text-align:center;color:#fff;width:320px;backdrop-filter:blur(8px)}
+#btn{width:180px;height:180px;border-radius:50%;border:none;font-size:28px;font-weight:bold}
+button{cursor:pointer}
+</style></head><body><div class="box">
+<h1>🎮 بردیا پوینت</h1>
+<div>⭐ بردیا: <span id="s">0</span></div>
+<div>🏆 لول: <span id="l">1</span></div><br>
+<button id="btn">بزن روش</button><br><br>
+<button onclick="up()">ارتقا (20)</button>
+</div>
+<script>
+let score=0,lvl=1,power=1,cost=20;
+const s=document.getElementById('s'),l=document.getElementById('l');
+function beep(){let a=new (AudioContext||webkitAudioContext)();let o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=700;g.gain.value=.05;o.start();o.stop(a.currentTime+.05);}
+function fx(x,y){let d=document.createElement('div');d.textContent='✨ +'+power;d.style='position:fixed;left:'+x+'px;top:'+y+'px;color:#fff;font-weight:bold;pointer-events:none;transition:1s';document.body.appendChild(d);setTimeout(()=>{d.style.transform='translateY(-60px)';d.style.opacity=0;},10);setTimeout(()=>d.remove(),1000);}
+btn.onclick=e=>{score+=power;if(score>=lvl*100){lvl++;document.body.style.background='hsl('+Math.random()*360+',70%,55%)';}s.textContent=score;l.textContent=lvl;beep();fx(e.clientX,e.clientY);localStorage.game=JSON.stringify({score,lvl,power,cost});}
+function up(){if(score<cost)return alert('بردیا کافی نیست');score-=cost;power++;cost=Math.floor(cost*1.7);s.textContent=score;localStorage.game=JSON.stringify({score,lvl,power,cost});}
+if(localStorage.game){let d=JSON.parse(localStorage.game);score=d.score;lvl=d.lvl;power=d.power;cost=d.cost;s.textContent=score;l.textContent=lvl;}
+</script></body></html>
